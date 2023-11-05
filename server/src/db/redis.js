@@ -1,11 +1,18 @@
 const redis = require('redis')
 const { REDIS_CONF } = require('../conf/db.js')
 
-// 创建客户端
-const redisClient = redis.createClient(REDIS_CONF.port, REDIS_CONF.host)
-redisClient.on('error', err => {
-  console.error(err)
-})
+// create redis client
+const redisClient=redis.createClient(REDIS_CONF.port, REDIS_CONF.host)
+
+// Listen for the 'ready' event
+redisClient.on('ready', () => {
+  console.log('Redis client is connected');
+});
+
+// Listen for the 'error' event
+redisClient.on('error', (err) => {
+  console.error(err);
+});
 
 function set(key, val) {
   if (typeof val === 'object') {

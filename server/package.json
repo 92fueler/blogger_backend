@@ -2,10 +2,8 @@
   "name": "node-blogging",
   "version": "1.0.0",
   "description": "",
-  "main": "bin/www.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon bin/www.js",
-    "prd": "cross-env NODE_ENV=production nodemon bin/www.js"
+    "dev": "cross-env NODE_ENV=dev nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +13,8 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
-    "mysql": "^2.18.1",
+    "dotenv": "^16.3.1",
+    "mysql2": "^3.6.3",
     "redis": "^3.0.2"
   }
 }

@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    networks:
+      - myblog_network
+  redis:
+    image: redis:latest
+    environment:
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+    ports:
+      - "6379:6379"
+    networks:
+      - myblog_network
+networks:
+  myblog_network:
