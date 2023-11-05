@@ -38,15 +38,15 @@ const getPostData = (req) => {
 }
 
 const serverHandle = (req, res) => {
-  // 记录 access log 
+  // 记录 access log
   access(`${req.method} -- ${req.url} -- ${req.headers['user-agent']} -- ${Date.now()}`)
 
   // 设置返回格式为JSON
   res.setHeader('Content-type', 'application/json')
 
-  // 获取 request path 
+  // 获取 request path
   const url = req.url
-  req.path = url.split('?')[0] 
+  req.path = url.split('?')[0]
 
   // parse query
   req.query = querystring.parse(url.split('?')[1])
